@@ -10,24 +10,27 @@ export default class User {
         this.email = email
         this.password = password
     }
-
     isPasswordValid(password) {
-        return password.length >= 6
-    }
+        const minLength = 6
+        const hasMinLength = password.length >= minLength
+        const hasLetter = /[a-zA-Z]/.test(password)
+        const hasNumber = /\d/.test(password)
 
+        return hasMinLength && hasLetter && hasNumber
+    }
     isEmailValid(email) {
-        return email.includes('@')
-    }
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
+        return emailRegex.test(email)
+    }
     getEmail() {
         return this.email
     }
-
     getPassword() {
         return this.password
     }
-
     login() {
-        return this.email.endsWith('devmentor.pl')
+        const validEmailDomain = 'devmentor.pl'
+        return this.email.endsWith(validEmailDomain)
     }
 }
