@@ -7,7 +7,7 @@ export default function randomNumber(min, max) {
         return min
     }
 
-    return calcRandomNumber()
+    return calcRandomNumber(min, max)
 }
 
 function randomNumberValidation(min, max){
@@ -16,7 +16,7 @@ function randomNumberValidation(min, max){
     }
 }
 
-function calcRandomNumber() {
+function calcRandomNumber(min, max) {
     const range = max - min + 1
     return Math.floor(Math.random() * range) + min
 }

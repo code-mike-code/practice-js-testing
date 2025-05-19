@@ -21,4 +21,15 @@ describe('randomNumber', () => {
             expect(() => randomNumber(4, 3)).toThrow('min cant be bigger then max')
         })
     })
+
+    describe('correctRangeNumber', () => {
+        it('should return number between min and max', () => {
+            const min = 3
+            const max = 4
+            const result = randomNumber(min, max)
+
+            expect(result).toBeGreaterThanOrEqual(min)
+            expect(result).toBeLessThanOrEqual(max)
+        })
+    })
 })
