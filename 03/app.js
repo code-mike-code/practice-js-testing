@@ -2,7 +2,6 @@ export default function randomNumber(min, max) {
     randomNumberValidation(min, max)
     validateRange(min, max)
 
-
     if(isEqualRange(min, max)) {
         return min
     }
@@ -12,21 +11,24 @@ export default function randomNumber(min, max) {
 
 function randomNumberValidation(min, max){
     if(!isNumber(min) || !isNumber(max)) {
-        throw new TypeError('arguments must be numbers')
+        throw new TypeError('Arguments must be numbers')
     }
 }
 
 function calcRandomNumber(min, max) {
-    const range = max - min + 1
+    const range = calculateRange(min, max)
     return Math.floor(Math.random() * range) + min
 }
 
 function validateRange(min, max) {
     if(isInvalidRange(min, max)) {
-        throw new Error('min cant be bigger then max')
+        throw new Error('Minimum value cannot be bigger then maximum value')
     }
 }
 
+function calculateRange(min, max) {
+    return max - min + 1
+}
 function isNumber(value) {
     return typeof value === 'number'
 }
