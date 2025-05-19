@@ -1,7 +1,7 @@
 export default class User {
     constructor( {email, password} ) {
         if (!this.isEmailValid(email)) {
-            throw new Error('Invalid emil format!')
+            throw new Error('Invalid email format!')
         }
         if (!this.isPasswordValid(password)) {
             throw new Error('Password must be at least 6 characters long!')
@@ -22,8 +22,12 @@ export default class User {
     getEmail() {
         return this.email
     }
-    
+
     getPassword() {
         return this.password
+    }
+
+    login() {
+        return this.email.endsWith('devmentor.pl')
     }
 }
