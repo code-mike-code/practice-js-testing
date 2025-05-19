@@ -3,7 +3,7 @@ export default function randomNumber(min, max) {
     validateRange(min, max)
 
 
-    if(min === max) {
+    if(isEqualRange(min, max)) {
         return min
     }
 
@@ -11,7 +11,7 @@ export default function randomNumber(min, max) {
 }
 
 function randomNumberValidation(min, max){
-    if(typeof min !== 'number' || typeof max !== 'number') {
+    if(!isNumber(min) || !isNumber(max)) {
         throw new TypeError('arguments must be numbers')
     }
 }
@@ -22,7 +22,17 @@ function calcRandomNumber() {
 }
 
 function validateRange(min, max) {
-    if(min > max) {
+    if(isInvalidRange(min, max)) {
         throw new Error('min cant be bigger then max')
     }
+}
+
+function isNumber(value) {
+    return typeof value === 'number'
+}
+function isEqualRange(min, max) {
+    return min === max
+}
+function isInvalidRange(min, max) {
+    return min > max
 }
