@@ -15,4 +15,10 @@ describe('randomNumber', () => {
             expect(() => randomNumber(undefined, 4)).toThrow(TypeError)
         })
     })
+
+    describe('rangeValidation', () => {
+        it('should throw Error when min is bigger than max', () => {
+            expect(() => randomNumber(4, 3)).toThrow('Min number cant be bigger then max number')
+        })
+    })
 })
