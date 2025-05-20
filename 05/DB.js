@@ -71,35 +71,7 @@ export default class DB {
                 resolve()
             })
         })
-
-
-
-        // return new Promise((resolve, reject) => {
-        //     if(!data.id) {
-        //         this.async(reject, 'ID have to be set!');
-        //     } else {
-        //         this.async(() => {
-        //             let updated = null;
-        //             this._rows = this._rows.map(item => {
-        //                 if(item.id === data.id) {
-        //                     updated = data
-        //                     return updated;
-        //                 }
-            
-        //                 return item;
-        //             });
-
-        //             if(updated) {
-        //                 resolve(updated);
-        //             } else {
-        //                 reject('ID not found!');   
-        //             }
-        //         });
-        //     }
-        // });
     }
-
-    
 
     truncate() {
         return new Promise(resolve => {
@@ -119,7 +91,6 @@ export default class DB {
         })
     }
 
-
     async(callback) {
         if (typeof callback !== 'function') {
             return new Promise(resolve => {
@@ -133,10 +104,4 @@ export default class DB {
             callback()
         }, Math.random() * 100)
     }
-
-    // async(callback, ...params) {
-    //     setTimeout(() => {
-    //         callback(...params);
-    //     }, Math.random() * 100);
-    // }
 }
