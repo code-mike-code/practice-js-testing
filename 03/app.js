@@ -10,8 +10,11 @@ export default function randomNumber(min, max) {
 }
 
 function randomNumberValidation(min, max){
-    if(!isNumber(min) || !isNumber(max)) {
-        throw new TypeError('Arguments must be numbers')
+    if(!isNumber(min)) {
+        throw new TypeError('First argument should be a number')
+    }
+    if(!isNumber(max)) {
+        throw new TypeError('Second argument should be a number')
     }
 }
 

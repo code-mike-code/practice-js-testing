@@ -66,6 +66,32 @@ describe('DB', () => {
         })
     })
 
+    describe('truncate()', () => {
+        it('should clear all data from database', async () => {
+            await testDataInsert(3)
+            let rows = await db.getRows()
+            expect(rows.length).toBe(3)
+    
+            await db.truncate()
+
+            rows = await db.getRows()
+            expect(rows.length).toBe(0)
+            expect(rows).toEqual([])
+        })
+    
+        it('should allow inserting data after truncate', async () => {
+            await testDataInsert(2)
+            await db.truncate()
+    
+            const testData = { name: 'New test' }
+            await db.insert(testData)
+    
+            const rows = await db.getRows()
+            expect(rows.length).toBe(1)
+            expect(rows[0]).toEqual({ ...testData, id: 1 })
+        })
+    })
+
     describe('getRows()', () => {
         it ('should return all rows', async () => {
             const rowsTestData = await testDataInsert(2)
@@ -74,7 +100,7 @@ describe('DB', () => {
             expect(rows.length).toBe(2)
             expect(rows).toEqual(rowsTestData)
         })
-        
+
         it ('should return empty array for empty database', async () => {
             const rows = await db.getRows()
             expect(rows).toEqual([])

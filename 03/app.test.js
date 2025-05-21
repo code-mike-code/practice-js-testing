@@ -9,10 +9,15 @@ describe('randomNumber', () => {
     })
 
     describe('numberValidation', () => {
-        it('should throw TypeError when arguments are not numbers', () => {
-            expect(() => randomNumber('a', 4)).toThrow(TypeError)
-            expect(() => randomNumber(3, 'b')).toThrow(TypeError)
-            expect(() => randomNumber(undefined, 4)).toThrow(TypeError)
+        it('should throw TypeError when first argument is not a number', () => {
+            expect(() => randomNumber('a', 4)).toThrow('First argument should be a number')
+            expect(() => randomNumber(undefined, 4)).toThrow('First argument should be a number')
+            expect(() => randomNumber(null, 4)).toThrow('First argument should be a number')
+        })
+        it('should throw TypeError when second argument is not a number', () => {
+            expect(() => randomNumber(3, 'b')).toThrow('Second argument should be a number')
+            expect(() => randomNumber(3, undefined)).toThrow('Second argument should be a number')
+            expect(() => randomNumber(3, null)).toThrow('Second argument should be a number')
         })
     })
 
