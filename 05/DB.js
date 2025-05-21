@@ -45,7 +45,7 @@ export default class DB {
         const item = this._rows.find(row => row.id === id)
 
         if (!item) {
-            throw new Error(`Item with id ${id} not found`)
+            throw new Error('Item do not exist')
         }
 
         this._rows = this._rows.filter(row => row.id !== id)

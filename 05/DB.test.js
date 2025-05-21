@@ -48,7 +48,7 @@ describe('DB', () => {
         })
 
         it ('should reject when removing not existing ID item', async () => {
-            await expect(db.remove(999)).rejects.toThrow()
+            await expect(db.remove(999)).rejects.toThrow('Item do not exist')
         })
     })
 
